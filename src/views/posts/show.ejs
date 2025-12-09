@@ -11,19 +11,23 @@
       <div class="post-time" data-test="post-time">
         <%= postCreatedAt %>
       </div>
-      <% if(!hasLiked){ %>
-        <form action="/likes/<%= post.id %>" method="POST" data-test="form-like">
-          <button type="submit" data-test="submit-like" class="like-btn like">
-            <span class="material-icons" data-test="favorite-icon">favorite_border</span>
-          </button>
-        </form>
-      <% } else { %>
-      <form action="/likes/<%= post.id %>?_method=DELETE" method="POST" data-test="form-like">
-        <button type="submit" data-test="submit-like" class="like-btn unlike">
-          <span class="material-icons" data-test="favorite-icon">favorite</span>
-        </button>
-      </form>
-      <% } %>
+      <% if (!hasLiked) { %>
+    <form action="/likes/<%= post.id %>" method="POST" data-test="form-like">
+      <button type="submit" class="like-btn like" data-test="submit-like">
+        <span class="material-icons" data-test="favorite-icon">
+          favorite_border
+        </span>
+      </button>
+    </form>
+    <% } else { %>
+    <form action="/likes/<%= post.id %>?_method=DELETE" method="POST" data-test="form-like">
+      <button type="submit" class="like-btn unlike" data-test="submit-like">
+        <span class="material-icons" data-test="favorite-icon">
+          favorite
+        </span>
+      </button>
+    </form>
+    <% } %>
       <span data-test="like-count"><%= likeCount %></span>
       <% if(user.equal(currentUser)) { %>
         <div class="post-menus">
